@@ -136,4 +136,4 @@ aigc-wenzhang/
 
 ---
 
-*更多信息请查看 [项目主页](https://github.com/your-username/aigc-wenzhang)*
+*更多信息请查看 [项目主页](https://github.com/helloworld9999/aigc-article-writer)*

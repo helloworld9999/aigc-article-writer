@@ -59,8 +59,8 @@
 ### 安装
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/aigc-wenzhang.git
-cd aigc-wenzhang
+git clone https://github.com/helloworld9999/aigc-article-writer.git
+cd aigc-article-writer
 
 # 创建虚拟环境
 python -m venv venv
@@ -175,7 +175,7 @@ WEB_HOST=127.0.0.1
 
 ### 获取帮助
 - **文档**: 查看 [README.md](README.md) 获取详细使用说明
-- **问题反馈**: 在 [GitHub Issues](https://github.com/your-username/aigc-wenzhang/issues) 提交问题
+- **问题反馈**: 在 [GitHub Issues](https://github.com/helloworld9999/aigc-article-writer/issues) 提交问题
 - **功能建议**: 欢迎提交功能请求和改进建议
 
 ### 贡献代码
@@ -203,6 +203,6 @@ WEB_HOST=127.0.0.1
 
 **🎉 立即体验AI文章撰写工具，开启智能写作新时代！🎉**
 
-[下载项目](https://github.com/your-username/aigc-wenzhang) | [查看文档](README.md) | [提交反馈](https://github.com/your-username/aigc-wenzhang/issues)
+[下载项目](https://github.com/helloworld9999/aigc-article-writer) | [查看文档](README.md) | [提交反馈](https://github.com/helloworld9999/aigc-article-writer/issues)
 
 </div>

@@ -5,7 +5,7 @@ echo ========================================
 echo.
 
 echo 请确保您已经在GitHub上创建了仓库！
-echo 仓库名建议: aigc-wenzhang
+echo 仓库名建议: aigc-article-writer
 echo.
 
 set /p username="请输入您的GitHub用户名: "
@@ -17,7 +17,7 @@ if "%username%"=="" (
 
 echo.
 echo 正在添加远程仓库...
-git remote add origin https://github.com/%username%/aigc-wenzhang.git
+git remote add origin https://github.com/%username%/aigc-article-writer.git
 
 echo.
 echo 验证远程仓库...
@@ -41,7 +41,7 @@ echo 🎉 提交完成！
 echo ========================================
 echo.
 echo 您的项目现在可以在以下地址访问:
-echo https://github.com/%username%/aigc-wenzhang
+echo https://github.com/%username%/aigc-article-writer
 echo.
 echo 建议接下来的操作:
 echo 1. 在GitHub上设置仓库描述和标签

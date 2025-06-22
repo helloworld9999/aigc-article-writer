@@ -54,8 +54,8 @@
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/your-username/aigc-wenzhang.git
-   cd aigc-wenzhang
+   git clone https://github.com/helloworld9999/aigc-article-writer.git
+   cd aigc-article-writer
    ```
 
 2. **创建虚拟环境**
@@ -376,9 +376,9 @@ tail -f logs/error.log
 
 ## 📞 联系方式
 
-- **项目主页**: https://github.com/your-username/aigc-wenzhang
-- **问题反馈**: https://github.com/your-username/aigc-wenzhang/issues
-- **邮箱**: your-email@example.com
+- **项目主页**: https://github.com/helloworld9999/aigc-article-writer
+- **问题反馈**: https://github.com/helloworld9999/aigc-article-writer/issues
+- **邮箱**: helloworld9999@example.com
 
 ## 🔮 路线图
 
