@@ -12,57 +12,78 @@ class NewsSourceManager:
         self.sources = {
             'rss_sources': [
                 {
-                    'name': '新浪新闻-要闻',
-                    'url': 'https://rss.sina.com.cn/news/china/focus15.xml',
+                    'name': '36氪',
+                    'url': 'https://36kr.com/feed',
                     'encoding': 'utf-8',
                     'priority': 1,
                     'active': True
                 },
                 {
-                    'name': '人民网-时政',
-                    'url': 'http://www.people.com.cn/rss/politics.xml',
+                    'name': '钛媒体',
+                    'url': 'https://www.tmtpost.com/rss.xml',
                     'encoding': 'utf-8',
                     'priority': 1,
                     'active': True
                 },
                 {
-                    'name': '新华网-时政',
-                    'url': 'http://www.xinhuanet.com/politics/news_politics.xml',
+                    'name': 'BBC中文',
+                    'url': 'https://feeds.bbci.co.uk/zhongwen/simp/rss.xml',
                     'encoding': 'utf-8',
                     'priority': 1,
                     'active': True
                 },
                 {
-                    'name': '中国新闻网',
+                    'name': 'IT之家',
+                    'url': 'https://www.ithome.com/rss/',
+                    'encoding': 'utf-8',
+                    'priority': 1,
+                    'active': True
+                },
+                {
+                    'name': '少数派',
+                    'url': 'https://sspai.com/feed',
+                    'encoding': 'utf-8',
+                    'priority': 1,
+                    'active': True
+                },
+                {
+                    'name': '虎嗅',
+                    'url': 'https://www.huxiu.com/rss/0.xml',
+                    'encoding': 'utf-8',
+                    'priority': 2,
+                    'active': True
+                },
+                {
+                    'name': '中国新闻网-滚动',
                     'url': 'https://www.chinanews.com.cn/rss/scroll-news.xml',
                     'encoding': 'utf-8',
                     'priority': 2,
                     'active': True
                 },
                 {
-                    'name': '光明网',
-                    'url': 'http://www.gmw.cn/rss/news.xml',
+                    'name': '网易新闻',
+                    'url': 'https://news.163.com/special/00011K6L/rss_newstop.xml',
                     'encoding': 'utf-8',
                     'priority': 2,
                     'active': True
                 },
                 {
-                    'name': '中青在线',
-                    'url': 'http://news.cyol.com/rss/news.xml',
+                    'name': '搜狐新闻',
+                    'url': 'https://news.sohu.com/rss/news.xml',
                     'encoding': 'utf-8',
                     'priority': 2,
                     'active': True
                 },
                 {
-                    'name': '环球网',
-                    'url': 'https://china.huanqiu.com/rss/china.xml',
+                    'name': '腾讯新闻',
+                    'url': 'https://news.qq.com/newsgn/rss_newsgn.xml',
                     'encoding': 'utf-8',
                     'priority': 3,
                     'active': True
                 },
                 {
-                    'name': '澎湃新闻',
-                    'url': 'https://www.thepaper.cn/rss/news.xml',
+                    'name': '凤凰网',
+                    'url': 'https://news.ifeng.com/rss/index.xml',
                     'encoding': 'utf-8',
                     'priority': 3,
                     'active': True

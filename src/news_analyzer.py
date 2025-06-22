@@ -20,8 +20,11 @@ class NewsAnalyzer:
     def __init__(self):
         """初始化新闻分析器"""
         from .news_sources import get_news_sources
+        from .config import get_config
+
         self.news_sources = self._convert_sources_format(get_news_sources())
-        
+        self.config = get_config()
+
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -32,9 +35,10 @@ class NewsAnalyzer:
         }
 
         # 配置参数
-        self.timeout = 8  # 减少超时时间
-        self.max_retries = 1  # 减少重试次数
-        self.max_sources = 4  # 限制同时处理的源数量
+        self.timeout = self.config.NEWS_FETCH_TIMEOUT
+        self.max_retries = self.config.NEWS_FETCH_RETRY
+        self.max_sources = 6  # 增加处理源数量
+        self.max_age_days = self.config.NEWS_MAX_AGE_DAYS
 
     def _convert_sources_format(self, sources):
         """转换新闻源格式以兼容现有代码"""
@@ -80,8 +84,11 @@ class NewsAnalyzer:
                 print(f"获取 {source['name']} 新闻失败: {e}")
                 continue
 
+        # 过滤时间范围（只保留近N天的新闻）
+        filtered_news = self._filter_by_time(all_news)
+
         # 按时间排序并去重
-        unique_news = self._deduplicate_news(all_news)
+        unique_news = self._deduplicate_news(filtered_news)
         trending_news = sorted(unique_news, key=lambda x: x['publish_time'], reverse=True)
 
         return trending_news[:limit]
@@ -204,27 +211,54 @@ class NewsAnalyzer:
             print(f"解析API源失败: {e}")
             return []
     
+    def _filter_by_time(self, news_list):
+        """按时间过滤新闻，只保留近N天的新闻"""
+        from datetime import timedelta
+
+        cutoff_time = datetime.now() - timedelta(days=self.max_age_days)
+        filtered_news = []
+
+        for news in news_list:
+            try:
+                publish_time = news['publish_time']
+                if isinstance(publish_time, str):
+                    # 如果是字符串，尝试解析
+                    publish_time = datetime.fromisoformat(publish_time.replace('Z', '+00:00'))
+
+                if publish_time >= cutoff_time:
+                    filtered_news.append(news)
+                else:
+                    print(f"过滤旧新闻: {news['title']} ({publish_time})")
+
+            except Exception as e:
+                print(f"时间过滤错误: {e}, 保留新闻: {news['title']}")
+                # 如果时间解析失败，保留新闻
+                filtered_news.append(news)
+
+        print(f"时间过滤: {len(news_list)} -> {len(filtered_news)} (保留近{self.max_age_days}天)")
+        return filtered_news
+
     def _deduplicate_news(self, news_list):
         """新闻去重"""
         seen_titles = set()
         unique_news = []
-        
+
         for news in news_list:
             # 简单的标题相似度去重
             title_words = set(jieba.cut(news['title']))
             is_duplicate = False
-            
+
             for seen_title in seen_titles:
                 seen_words = set(jieba.cut(seen_title))
                 similarity = len(title_words & seen_words) / len(title_words | seen_words)
                 if similarity > 0.7:  # 相似度阈值
                     is_duplicate = True
                     break
-            
+
             if not is_duplicate:
                 seen_titles.add(news['title'])
                 unique_news.append(news)
-        
+
         return unique_news
     
     def analyze_trending_topics(self, news_list):

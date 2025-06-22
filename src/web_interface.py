@@ -38,15 +38,31 @@ def create_app():
         try:
             limit = request.args.get('limit', 20, type=int)
             news_list = news_analyzer.get_trending_news(limit)
-            
-            # 转换datetime为字符串
+
+            # 统计时间分布
+            from datetime import datetime, timedelta
+            time_stats = {'today': 0, 'yesterday': 0, 'older': 0}
+
+            # 转换datetime为字符串并统计
             for news in news_list:
-                news['publish_time'] = news['publish_time'].isoformat()
-            
+                publish_time = news['publish_time']
+                time_diff = datetime.now() - publish_time
+
+                if time_diff.days == 0:
+                    time_stats['today'] += 1
+                elif time_diff.days == 1:
+                    time_stats['yesterday'] += 1
+                else:
+                    time_stats['older'] += 1
+
+                news['publish_time'] = publish_time.isoformat()
+
             return jsonify({
                 'success': True,
                 'data': news_list,
-                'count': len(news_list)
+                'count': len(news_list),
+                'time_stats': time_stats,
+                'max_age_days': news_analyzer.max_age_days
             })
         except Exception as e:
             return jsonify({

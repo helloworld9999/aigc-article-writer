@@ -52,6 +52,7 @@ class Config:
         self.NEWS_FETCH_RETRY = int(os.getenv('NEWS_FETCH_RETRY', '3'))
         self.NEWS_CACHE_DURATION = int(os.getenv('NEWS_CACHE_DURATION', '1800'))
         self.MAX_NEWS_PER_SOURCE = int(os.getenv('MAX_NEWS_PER_SOURCE', '20'))
+        self.NEWS_MAX_AGE_DAYS = int(os.getenv('NEWS_MAX_AGE_DAYS', '3'))
         
         # 文章配置
         self.ARTICLES_DIR = os.getenv('ARTICLES_DIR', 'articles')

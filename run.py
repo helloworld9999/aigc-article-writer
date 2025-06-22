@@ -48,9 +48,9 @@ def main():
         print("✅ Web应用创建成功")
 
         # 获取配置参数
-        host = config.get('WEB_HOST', '127.0.0.1')
-        port = int(config.get('WEB_PORT', 5000))
-        debug = config.get('DEBUG', 'false').lower() == 'true'
+        host = config.WEB_HOST
+        port = config.WEB_PORT
+        debug = config.FLASK_DEBUG
 
         print(f"🌐 服务地址: http://{host}:{port}")
         print(f"🔧 调试模式: {'开启' if debug else '关闭'}")
