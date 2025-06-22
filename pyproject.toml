@@ -1,0 +1,33 @@
+[project]
+name = "aigc-wenzhang"
+version = "0.1.0"
+description = "AI文章撰写工具 - 分析实时热点新闻并撰写高质量独家首发报道"
+authors = [
+    {name = "AI Assistant", email = "ai@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "feedparser>=6.0.10",
+    "python-dotenv>=1.0.0",
+    "newspaper3k>=0.2.8",
+    "jieba>=0.42.1",
+    "flask>=2.3.0",
+    "openai>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+    "pytest",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+aigc-wenzhang = "main:main"
